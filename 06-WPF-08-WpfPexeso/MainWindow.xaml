@@ -1,0 +1,71 @@
+﻿<Window x:Class="WpfPexeso.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfPexeso"
+        mc:Ignorable="d"
+        x:Name="PexesoWindow"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid x:Name="ConfigPanel" Visibility="Hidden">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Viewbox Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="0">
+                <Label Content="Vítejte ve hře pexeso"/>
+            </Viewbox>
+
+            <Button Grid.Column="0" Grid.Row="1" Content="2x2" FontSize="20" Margin="10" Click="StartButton_Click"/>
+            <Button Grid.Column="1" Grid.Row="1" Content="4x4" FontSize="20" Margin="10" Click="StartButton_Click"/>
+            <Button Grid.Column="2" Grid.Row="1" Content="6x6" FontSize="20" Margin="10" Click="StartButton_Click"/>
+            
+        </Grid>
+        
+        <Grid x:Name="GamePanel" Visibility="Hidden">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Border BorderThickness="2" BorderBrush="Black" Grid.Column="1">
+                <Grid x:Name="Board"/>
+            </Border>
+
+            <Viewbox Grid.Column="0">
+                <Label Content="{Binding ElementName=PexesoWindow, Path=Clicks}"/>
+            </Viewbox>
+        </Grid>
+        
+        <Grid x:Name="ResultsPanel" Visibility="Visible">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Viewbox Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="0">
+                <Label Content="Hotovo!"/>
+            </Viewbox>
+            <Viewbox Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1">
+                <Label Content="{Binding ElementName=PexesoWindow, Path=Clicks}"/>
+            </Viewbox>
+
+            <Button x:Name="PlayAgainBtn" Grid.Column="0" Grid.Row="2" Content="Hrát znovu" FontSize="20" Margin="10" Click="PlayAgainBtn_Click"/>
+            <Button x:Name="ExitBtn" Grid.Column="1" Grid.Row="2" Content="Ukončit" FontSize="20" Margin="10" Click="ExitBtn_Click"/>
+
+        </Grid>
+        
+    </Grid>
+</Window>
